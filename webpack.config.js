@@ -23,11 +23,15 @@ module.exports={
 	//loader加载器
 	module:{
 		rules:[
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
 			{	//css加载器
 				test:/\.css$/,
 				loader:'style-loader!css-loader'
 			},
-			{	
+			{
 				test:/\.js/,
 				loader:'babel-loader'
 			},
