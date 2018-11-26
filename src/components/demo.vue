@@ -1,5 +1,9 @@
 <template>
-    <div class="demo">{{ msg }}</div>
+    <div class="demo">
+        {{ msg }}
+        <!--<div>foo</div>
+        <a href="/demo">/demo</a>-->
+    </div>
 </template>
 
 <script>
@@ -7,7 +11,7 @@
         name: "demo",
         data (){
             return {
-                msg: 'SPA demo'
+                msg: 'SPA demo page!'
             }
         }
     }

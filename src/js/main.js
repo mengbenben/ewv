@@ -4,7 +4,9 @@ import Vue from 'vue';
 // 导入 vue 组件
 import demo from '../components/demo.vue';
 import hello from '../components/demo.vue';
-
+//定义（路由）组件
+const Foo = { template: '<div>foo</div>' }
+const Bar = { template: '<div>bar</div>' }
 
 // 1 导入 路由模块
 import VueRouter from 'vue-router'
@@ -14,13 +16,15 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     routes: [
         { path: '/demo', component: demo },
-        { path: '/hello', component: hello }
+        { path: '/hello', component: hello },
+        { path: '/foo', component: Foo },
+        { path: '/bar', component: Bar }
     ]
 })
 
 const vm = new Vue({
     el: '#spa-app',
-    render: c => c(demo),
+    //render: c => c(demo),
     // 4 挂载到 vue 实例中
     router
 })

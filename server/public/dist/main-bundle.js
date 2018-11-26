@@ -1019,12 +1019,16 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
 
 exports.default = {
     name: "demo",
     data: function data() {
         return {
-            msg: 'SPA demo'
+            msg: 'SPA demo page!'
         };
     }
 };
@@ -14762,21 +14766,22 @@ __webpack_require__(14);
 
 // 导入 vue 组件
 
+//定义（路由）组件
+var Foo = { template: '<div>foo</div>' };
+var Bar = { template: '<div>bar</div>'
 
-// 1 导入 路由模块
-
+    // 1 导入 路由模块
+};
 // 2 调用use方法使用插件
 _vue2.default.use(_vueRouter2.default
 // 3 创建路由对象
 );var router = new _vueRouter2.default({
-    routes: [{ path: '/demo', component: _demo2.default }, { path: '/hello', component: _demo2.default }]
+    routes: [{ path: '/demo', component: _demo2.default }, { path: '/hello', component: _demo2.default }, { path: '/foo', component: Foo }, { path: '/bar', component: Bar }]
 });
 
 var vm = new _vue2.default({
     el: '#spa-app',
-    render: function render(c) {
-        return c(_demo2.default);
-    },
+    //render: c => c(demo),
     // 4 挂载到 vue 实例中
     router: router
 });
@@ -14898,7 +14903,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "body{\n\twidth: 300px;\n\theight: 200px;\n\tpadding: 15px;\n\tfont-size: 30px;\n\t//color: white;\n\t//background-color: orange;\n\tmargin: 20px;  \n}\n", ""]);
+exports.push([module.i, "body{\n\t//width: 300px;\n\theight: 200px;\n\tpadding: 15px;\n\tfont-size: 30px;\n\t//color: white;\n\t//background-color: orange;\n\tmargin: 20px;\n}\n", ""]);
 
 // exports
 
@@ -15380,7 +15385,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "demo" }, [_vm._v(_vm._s(_vm.msg))])
+  return _c("div", { staticClass: "demo" }, [
+    _vm._v("\n    " + _vm._s(_vm.msg) + "\n    ")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
