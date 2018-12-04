@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<title><%=title%></title>
+	</head>
+	<body>
+		<div class="container">
+			<div id="app" class="col-sm-6">
+				{{title}}
+			</div>
+			<div id="contentApp" class="col-sm-6">
+				{{content}}
+				<input type="text" v-model="message" placeholder="edit me">
+				<p>Message is: {{ message }}</p>
+				<!-- 完整语法 -->
+				<a v-on:click="getData">v-on:click</a>
+				<!-- 缩写 -->
+				<a @click="postData">@click</a>
+			</div>
+
+			<div id="spa-app">
+				<h1>使用 router-link 组件来导航</h1>
+				<p>
+					<!-- 使用 router-link 组件来导航. -->
+					<!-- 通过传入 `to` 属性指定链接. -->
+					<!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+					<router-link to="/demo">Go to Foo</router-link>
+					<router-link to="/bar">Go to Bar</router-link>
+				</p>
+				<!-- 路由出口 -->
+				<!-- 路由匹配到的组件将渲染在这里 -->
+				<router-view></router-view>
+			</div>
+
+			<div id="spa">
+				<!--tpl-->
+			</div>
+
+		</div>
+	<script type="text/javascript" src="http://localhost:3000/dist/info-bundle.js"></script></body>
+</html>
