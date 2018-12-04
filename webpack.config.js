@@ -5,6 +5,7 @@ module.exports={
 	//js入口文件我们默认以多入口为例子，其他用法可以关注我的文章后续会发出来
 	entry:{
 		main:'./src/js/main.js',
+        info:'./src/js/main.js'
 	},
 	//打包输出的js文件位置［name］会按照模块的名称自动生成两个js文件
 	output:{
@@ -50,6 +51,14 @@ module.exports={
 			template:'./src/tpl/index.html',
 			//chunks代表当前页面需要引入上述哪个依赖文件，我们直接将两个都引入
 			chunks:['main']
-		})
+		}),
+        new htmlWebpackPlugin({
+            //这个是生成的html文件名，我们把它直接放在views中覆盖原有的欢迎页面
+            filename:'../views/info.html',
+            //这个是根据哪个页面模版来打包文件
+            template:'./src/tpl/index.html',
+            //chunks代表当前页面需要引入上述哪个依赖文件，我们直接将两个都引入
+            chunks:['info']
+        })
 	]
 }

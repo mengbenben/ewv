@@ -29,6 +29,7 @@
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
     "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^2.1.2",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.18.2",
