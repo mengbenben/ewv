@@ -1,19 +1,25 @@
 <template>
-    <div class="example">{{ msg }}</div>
+    <div class="hello">
+        {{ msg }}
+        <!--<div>foo</div>
+        <a href="/demo">/demo</a>-->
+        <router-link to='/' tag='li'><a href="/">back</a></router-link>
+    </div>
 </template>
 
 <script>
     export default {
-        data () {
+        name: "hello",
+        data (){
             return {
-                msg: 'SPA hello page'
+                msg: 'SPA hello page!'
             }
         }
     }
 </script>
 
-<style>
-    .example {
-        color: red;
+<style scoped>
+    .hello {
+        color: #69ff35;
     }
 </style>

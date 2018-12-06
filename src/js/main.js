@@ -3,7 +3,9 @@ require('../css/style.css');
 import Vue from 'vue';
 // 导入 vue 组件
 import demo from '../components/demo.vue';
-import hello from '../components/demo.vue';
+import hello from '../components/hello.vue';
+import app from '../components/app.vue';
+
 //定义（路由）组件
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
@@ -15,6 +17,7 @@ Vue.use(VueRouter)
 // 3 创建路由对象
 const router = new VueRouter({
     routes: [
+        { path: '/', component: app },
         { path: '/demo', component: demo },
         { path: '/hello', component: hello },
         { path: '/foo', component: Foo },
@@ -23,41 +26,30 @@ const router = new VueRouter({
 })
 
 const vm = new Vue({
-    el: '#spa-app',
+    el: '#app',
     //render: c => c(demo),
     // 4 挂载到 vue 实例中
     router
 })
 
-/*// 1. 定义（路由）组件。
-// 也可以从其他文件 import 进来
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
 
-// 2. 定义路由
-// 每个路由应该映射一个组件。 其中"component" 可以是
-// 通过 Vue.extend() 创建的组件构造器，
-// 或者，只是一个组件配置对象。
-const routes = [
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
-]
 
-const router = new VueRouter({
-    routes // （缩写）相当于 routes: routes
-})
 
-const spaApp = new Vue({
-    router
-}).$mount('#spa-app')*/
+
+
+
+
+
+
+
 
 
 // 配合 webpack 使用方式如下：
-import axios from 'axios';
+/*import axios from 'axios';
 // 将 axios 添加到 Vue.prototype 中
-Vue.prototype.$axios = axios;
+Vue.prototype.$axios = axios;*/
 
-var app = new Vue({
+/*var app = new Vue({
     el:'#app',
     data:{
         title:'hello vue'
@@ -95,7 +87,7 @@ var contentApp = new Vue({
             });
         }
     }
-})
+})*/
 
 
 

@@ -26,7 +26,7 @@ var compiler = webpack(webpackConfig,function(err,stats){
 	  poll: undefined,
 	  ignored: '/node_modules/'
 	},function(err,stats){
-	
+
 	})
 });
 
@@ -51,13 +51,22 @@ app.use(express.static(path.join(__dirname, 'server/public')));
 app.use('/', index);
 app.use('/users', users);
 
-/*
-var userDao = require('./dao/userDao');
+//redis
+var demoRedis = require('./server/redis/demo/demoRedis');
+app.get('/redisGetTest', function(req, res, next) {
+    demoRedis.hgetall(req, res, next);
+});
+app.get('/redisSetTest', function(req, res, next) {
+    demoRedis.hmset(req, res, next);
+});
+
+//mysql
+var userDao = require('./server/dao/user/userDao');
 app.get('/queryAll', function(req, res, next) {
     userDao.queryAll(req, res, next);
 });
 
-//dataJson
+//const
 const dataJson = {
 	name: 'Jhon',
 	age: 30,
@@ -66,34 +75,6 @@ const dataJson = {
 app.get('/dataJson', function(req, res) {
     res.send(dataJson);
 });
-
-
-
-//mysql
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host     : '106.15.120.208',
-    port    : 3306,
-    user     : 'root',
-    password : '2018.Nanjing',
-    database : 'butterfly'
-});
-
-app.get('/eagleUser', function(req, res) {
-    connection.connect();
-    var selSql = 'select * from eagle_user';
-    connection.query(selSql, function (err, result) {
-        if(err){
-            console.log('[DELETE ERROR] - ',err.message);
-            return;
-        }
-        //console.log('DELETE affectedRows',result.affectedRows);
-		res.send(result);
-    });
-});
-*/
-
-
 
 
 

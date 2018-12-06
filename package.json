@@ -20,6 +20,8 @@
     "jquery": "^3.3.1",
     "morgan": "~1.8.1",
     "mysql": "^2.5.4",
+    "redis": "^2.8.0",
+    "redis-connector": "0.0.0-deprecate",
     "serve-favicon": "~2.4.2",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
