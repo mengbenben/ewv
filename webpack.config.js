@@ -1,5 +1,6 @@
 //这里引入了html-webpack-plugin模块来构建动态的html页面
 var htmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports={
 	//js入口文件我们默认以多入口为例子，其他用法可以关注我的文章后续会发出来
@@ -24,23 +25,48 @@ module.exports={
 	//loader加载器
 	module:{
 		rules:[
-            {
+            /*{
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },*/
+            {
+                test: /\.vue$/,
+                use: [
+                    {
+                        loader: 'vue-loader',
+                    },
+                    {
+                        loader: 'iview-loader',
+                        options: {
+                            prefix: false
+                        }
+                    }
+                ]
             },
 			{	//css加载器
 				test:/\.css$/,
 				loader:'style-loader!css-loader'
 			},
+            {
+                test: /\.less/,
+                use: ExtractTextPlugin.extract({
+                    use: ['css-loader?minimize', 'autoprefixer-loader', 'less-loader'],
+                    fallback: 'style-loader'
+                })
+            },
 			{
 				test:/\.js/,
 				loader:'babel-loader'
 			},
-			{   //html加载器（html－webpack－plugin默认以ejs加载页面防止报错我们需要html加载器）
+            {   //html加载器（html－webpack－plugin默认以ejs加载页面防止报错我们需要html加载器）
 				test:/\.html$/,
 				loader:'html-loader'
-			}
-		]
+			},
+            {
+                test: /\.(svg|ttf|eot|woff)\??.*$/,
+                loader: "url-loader?limit=80000"
+            }
+        ]
 	},
 	//html页面扩展
 	plugins:[

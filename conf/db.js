@@ -1,4 +1,4 @@
-// MySQL数据库联接配置
+// MySQL数据库连接配置
 module.exports = {
     mysql: {
         host: '106.15.120.208',

@@ -5,10 +5,18 @@ import Vue from 'vue';
 import demo from '../components/demo.vue';
 import hello from '../components/hello.vue';
 import app from '../components/app.vue';
+import redis from '../components/redis.vue';
+import element from '../components/element.vue';
 
-//定义（路由）组件
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
+//ElementUI
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+
+//iview
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+Vue.use(iView);
 
 // 1 导入 路由模块
 import VueRouter from 'vue-router'
@@ -20,8 +28,8 @@ const router = new VueRouter({
         { path: '/', component: app },
         { path: '/demo', component: demo },
         { path: '/hello', component: hello },
-        { path: '/foo', component: Foo },
-        { path: '/bar', component: Bar }
+        { path: '/element', component: element },
+        { path: '/redis', component: redis }
     ]
 })
 
@@ -33,64 +41,10 @@ const vm = new Vue({
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
 // 配合 webpack 使用方式如下：
-/*import axios from 'axios';
+import axios from 'axios';
 // 将 axios 添加到 Vue.prototype 中
-Vue.prototype.$axios = axios;*/
-
-/*var app = new Vue({
-    el:'#app',
-    data:{
-        title:'hello vue'
-    }
-});
-
-var contentApp = new Vue({
-    el:'#contentApp',
-    data:{
-        content:'first vue page',
-        message:''
-    },
-    methods: {
-        getData(){
-            this.$axios.get('/users/queryAll')
-                .then(res => {
-                    //console.log('get'+ JSON.stringify(res.data));
-                    console.log('get----------------');
-                    console.log(res.data);
-                    contentApp.message = res.data[0].user_address;
-                })
-                .catch(err => {
-                    console.log(err.toString())
-                })
-        },
-        postData(){
-            this.$axios.post('/users/queryAll', {
-                firstName: 'Fred',
-                lastName: 'Flintstone'
-            }).then(function (res) {
-                console.log('post'+ res.data);
-                contentApp.message = res.data[0].user_nickname;
-            }).catch(function (err) {
-                console.log(err.toString());
-            });
-        }
-    }
-})*/
-
-
-
+Vue.prototype.$axios = axios;
 
 
 // 请求拦截器
@@ -107,18 +61,9 @@ axios.interceptors.request.use(function (config) {
 // 响应拦截器
 axios.interceptors.response.use(function (response) {
     // 所有请求完成后都要执行的操作
-
     return response;
 }, function (error) {
     // 错误处理
     return Promise.reject(error);
 });
-
-/*
-// url和参数分离，使用对象
-axios.get('/user', {
-    params: {
-        id: 12345
-    }
-})*/
 

@@ -1,4 +1,4 @@
-// MySQL数据库联接配置
+// redis连接配置
 module.exports = {
     redis: {
         host: '106.15.120.208',

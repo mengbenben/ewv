@@ -60,6 +60,14 @@ app.get('/redisSetTest', function(req, res, next) {
     demoRedis.hmset(req, res, next);
 });
 
+//String类型
+app.get('/redisGetStrTest', function(req, res, next) {
+    demoRedis.get(req, res, next);
+});
+app.post('/redisSetStrTest', function(req, res, next) {
+    demoRedis.set(req, res, next);
+});
+
 //mysql
 var userDao = require('./server/dao/user/userDao');
 app.get('/queryAll', function(req, res, next) {

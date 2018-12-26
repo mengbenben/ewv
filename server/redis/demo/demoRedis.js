@@ -57,11 +57,12 @@ module.exports = {
             client.hmset(params.key, info, function(error, reply){
                 if(error) {
                     console.log(error);
+                    res.send('error');
                 } else {
                     console.log(reply);
+                    res.send('success');
                 }
-                client.end();
-            });
+            });2
         }
     },
     hgetall: function(req, res, next) {
@@ -74,7 +75,6 @@ module.exports = {
                 } else {
                     res.send(reply);
                 }
-                client.end();
             });
             /*client.hmget('site', 'baidu', function(err, reply) {
                 if(err) {
@@ -85,6 +85,18 @@ module.exports = {
             });*/
         } else{
             res.send('无键');
+        }
+    },
+    del: function (req, res, next) {
+        var params = req.query || req.params;
+        if(params.key){
+            client.del(params.key, function(err, reply) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    res.send(reply);
+                }
+            });
         }
     }
 
